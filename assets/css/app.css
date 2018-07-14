@@ -1,0 +1,62 @@
+@font-face{font-family:'gt-walsheim-pro';src:url('../fonts/GTWalsheimProRegular.svg') format('svg'),url('../fonts/GTWalsheimProRegular.woff') format('woff');font-weight:normal;font-style:normal}
+@font-face{font-family:'gt-walsheim-pro';src:url('../fonts/GTWalsheimProBold.svg') format('svg'),url('../fonts/GTWalsheimProBold.woff') format('woff');font-weight:bold;font-style:normal}
+
+h1,h2,h3,h4,h5,h6,body,body .scf {
+    font-family:'gt-walsheim-pro','arial','helvetica',sans-serif
+}
+html, body {
+    position: absolute;
+    height: auto;
+    width: 100%;
+    min-height: 100%;
+}
+/* utility classes */
+
+.headspace-1 {
+    margin-top: 1em
+}
+
+.headspace-2 {
+    margin-top: 2em
+}
+
+.headspace-3 {
+    margin-top: 3em
+}
+
+.headspace-4 {
+    margin-top: 4em
+}
+
+.footspace-1 {
+    margin-bottom: 1em
+}
+
+.footspace-2 {
+    margin-bottom: 2em
+}
+
+.footspace-3 {
+    margin-bottom: 3em
+}
+
+.footspace-4 {
+    margin-bottom: 4em
+}
+
+.padding-head {
+    padding-top: 1em;
+}
+
+.padding-foot {
+    padding-bottom: 1em;
+}
+
+.fill_height {
+    display: flex;
+    flex-direction: column;
+}
+
+.spacer {
+    flex: 1;
+}
