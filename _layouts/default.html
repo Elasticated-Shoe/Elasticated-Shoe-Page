@@ -1,10 +1,28 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
     {% include head.html %}
-    <body class="fill_height">
-        {% include navbar.html %}
-        {{ content }}
-        <div class="spacer"></div>
-        {% include footer.html %}
+    <body data-url="{{ site.baseurl }}{{ page.permalink }}">
+        <div class="grid-y body-grid">
+            {% include navbar.html %}
+            {% if page.header %}
+                {% include header.html %}
+            {% endif %}
+            
+            {{ content }}
+            
+            {% include footer.html %}
+        </div>
+        <script src="{{ site.baseurl }}assets/js/vendor/jquery.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/what-input.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/slick.min.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/underscore.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/fuse.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/foundation.min.js"></script>
+        <script src="{{ site.baseurl }}assets/js/app.js"></script>
+        {% if page.javascript %}
+            {% for i in page.javascript %}
+                <script src="{{ site.baseurl }}{{ i }}"></script>
+            {% endfor %}
+        {% endif %}
     </body>
 </html>

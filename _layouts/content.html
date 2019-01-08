@@ -1,0 +1,13 @@
+---
+layout: default
+---
+{% if page.sections %}
+	{% assign sections = page.sections | sort: "order" %} {% comment %} <!-- gets page sections as an array ordered by the value of 'order' var --> {% endcomment %}
+    <div id="content-container" class="cell shrink">
+    {% for section in sections %}
+        <div {% if section.class %}class="{{ section.class }}"{% endif %} data-template="{{ section.templatePath }}">
+            {% include {{ section.templatePath }} content=section %}
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
