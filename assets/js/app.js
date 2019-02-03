@@ -53,7 +53,7 @@ $(document).ready(function(){
             $("#searchModal").foundation('open');
         });
     });
-    function performSearch(searchData, search) {
+    function performSearch(searchData, search, keys) {
         // set the options for fuseJS
         var options = {
             shouldSort: true,
@@ -64,10 +64,7 @@ $(document).ready(function(){
             distance: 100,
             maxPatternLength: 32,
             minMatchCharLength: search.length,
-            keys: [
-              "links",
-              "text",
-            ]
+            keys: keys
         }
         // Do search and get results. Results returned as JSON
         var fuse = new Fuse(searchData, options);

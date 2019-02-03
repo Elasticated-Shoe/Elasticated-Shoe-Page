@@ -3,10 +3,7 @@
     {% include head.html %}
     <body data-url="{{ site.baseurl }}{{ page.permalink }}">
         <div class="grid-y body-grid">
-            {% include navbar.html %}
-            {% if page.header %}
-                {% include header.html %}
-            {% endif %}
+            {% include header.html %}
             
             {{ content }}
             
@@ -21,7 +18,12 @@
         <script src="{{ site.baseurl }}assets/js/app.js"></script>
         {% if page.javascript %}
             {% for i in page.javascript %}
-                <script src="{{ site.baseurl }}{{ i }}"></script>
+                <script id="{{ i.id }}" {% if i.type %}type = "{{ i.type }}"{% endif %} src="{{ site.baseurl }}{{ i.script }}"></script>
+            {% endfor %}
+        {% endif %}
+        {% if page.template %}
+            {% for i in page.template %}
+                {% include {{ i.templatePath }} %}
             {% endfor %}
         {% endif %}
     </body>
