@@ -1,0 +1,47 @@
+<ul class="vertical menu">
+    <li>
+        <div class="grid-x {% if page.title == 'Home' %}nav-selected{% endif %}">
+            <div class="small-2 center-vertically-parent">
+                <a class="center-vertically-child" href="{{ site.baseurl }}">
+                    Home
+                </a>
+            </div>
+            <div class="small-8">
+                
+            </div>
+            <div class="small-2 icon-container">
+                <i class="fi-home"></i>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="grid-x {% if page.title == 'Contact' %}nav-selected{% endif %}">
+            <div class="small-2 center-vertically-parent">
+                <a class="center-vertically-child" href="{{ site.baseurl }}Contact/">
+                    Contact
+                </a>
+            </div>
+            <div class="small-8">
+                
+            </div>
+            <div class="small-2 icon-container">
+                <i class="fi-mail"></i>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="grid-x {% if page.title == 'Projects' %}nav-selected{% endif %}">
+            <div class="small-2 center-vertically-parent">
+                <a class="center-vertically-parent" href="{{ site.baseurl }}Projects/">
+                    Projects
+                </a>
+            </div>
+            <div class="small-8">
+                
+            </div>
+            <div class="small-2 icon-container">
+                <i class="fi-folder"></i>
+            </div>
+        </div>
+    </li>
+</ul>

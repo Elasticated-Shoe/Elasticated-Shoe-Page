@@ -6,7 +6,12 @@ body, .body-grid {
     height: 100%;
     min-height: 100%;
 }
-
+p {
+    margin: 0;
+}
+h1 {
+    font-weight: bold;
+}
 /*  ====================================================================================
     ====================================================================================
                                 CSS For Templates
@@ -15,18 +20,71 @@ body, .body-grid {
 */
 
 /*  ==================================================================================== */
+/*  Header Classes                                                                       */
+/*  ==================================================================================== */
+
+.header-container {
+    background-color: rgba(98, 121, 184);
+}
+    .page-anchors ul {
+        list-style-type: none;
+    }
+
+/*  ==================================================================================== */
+/*  Menu Classes                                                                         */
+/*  ==================================================================================== */
+
+.menu {
+    width: 100%;
+    background-color: rgba(142, 164, 210, 0.5);
+}
+/* a tag container container */
+.menu li {
+    box-sizing: border-box;
+    padding: 5px;
+}
+/* a tag in links */
+.menu li div div a, .page-anchors ul li a {
+    color: white;
+}
+/* a tag container */
+.menu li .grid-x {
+    background-color: #4c9f70;
+}
+    .menu li .grid-x.nav-selected {
+        background-color: #496f5d;
+    }
+.menu-text {
+    background-color: rgba(142, 164, 210, 0.5);
+    color: white;
+}
+/* a tag in links */
+.menu li div .icon-container {
+    text-align: end;
+}
+.menu li div .icon-container i {
+    font-size: 25px;
+    padding:10px;
+}
+.text-heading-nav {
+   background-color: #49516f; 
+}
+
+/*  ==================================================================================== */
 /*  Footer Classes                                                                      */
 /*  ==================================================================================== */
 
 .footer-container {
     position: relative;
-    min-height: 324px;
+    min-height: 100px;
     width: 100%;
 }
     .footer-bottom-container {
         position: absolute;
         width: 100%;
         bottom: 0px;
+        min-height: 100px;
+        background-color: rgba(98, 121, 184);
     }
         .footer-index {
             min-height: 70px;
@@ -43,6 +101,13 @@ body, .body-grid {
     ====================================================================================
 */
 
+.margin-5-image {
+    margin: 5%;
+}
+.rounded-image {
+    border-radius: 50%;
+    border: 10px solid rgba(142, 164, 210, 0.5);
+}
 .medium-image {
     width: 60%;
     height: auto;
@@ -84,6 +149,13 @@ body, .body-grid {
 /*  Utility Formating                                                                    */
 /*  ==================================================================================== */
 
+.text-10-margins {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.text-bold {
+    font-weight: bold;
+}
 .headspace-1 {
     margin-top: 1em;
 }

@@ -1,3 +1,22 @@
-<header>
-
-</header>
+<div class="cell shrink header-container">
+    <div class="grid-x">
+        <div class="small-12 medium-4 center-vertically-parent">
+            {% include navbar.html content=section %}
+        </div>
+        <div class="small-12 medium-3 center-horizontally-parent page-anchors">
+            <h1>{{ page.title }}</h1>
+            <ul>
+                {% for anchor in page.header.sections %}
+                    <li>
+                        <a href="#{{ anchor.tag }}">{{ anchor.text }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="small-12 medium-5">
+            {% for section in page.header.introduction %}
+                {% include {{ section.templatePath }} templateContent=section %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
