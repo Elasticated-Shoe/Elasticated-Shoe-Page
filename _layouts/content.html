@@ -5,6 +5,9 @@ layout: default
 	{% assign sections = page.sections %}
     <div id="content-container" class="cell shrink">
     {% for section in sections %}
+        {% if section.anchor %}
+            <a id="{{ section.anchor }}"></a>
+        {% endif %}
         <div class="grid-container {{ section.class }}" data-template="{{ section.templatePath }}">
             {% include {{ section.templatePath }} templateContent=section %}
         </div>

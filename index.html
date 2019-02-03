@@ -4,9 +4,11 @@ layout: content
 title: Home
 header:
   sections:
-    - tag: top
+    - tag: aboutTemplate
       text: About This Site
-    - tag: top
+    - tag: searchBarTemplate
+      text: Search This Site
+    - tag: recentCommitsTemplate
       text: Recent Commits
   introduction:
     - templatePath: content_types/split-left-right.html
@@ -31,13 +33,19 @@ template:
   - templatePath: content_types/gitRepos.html
 sections:
   - templatePath: content_types/text.html
+    anchor: aboutTemplate
     text: About This Site
     class: headspace-1 text-bold
   - templatePath: content_types/text.html
     text: This site is a GitHub Page, a repository that GitHub build using a static site generater (Jekyll in this case) and host themselves. Its main purpose is to store documentation for your projects and showcase examples if possible. I will also use it to display some GitHub statistics and blog, although not much of the latter.
     class: text-bold
   - templatePath: content_types/search.html
+    anchor: searchBarTemplate
     class: headspace-2 footspace-2
+  - templatePath: content_types/text.html
+    anchor: recentCommitsTemplate
+    text: Recent Commits
+    class: headspace-1 text-bold
   - templatePath: content_types/jsTemplateContent.html
     id: gitReposTemplateContent
 ---
