@@ -1,0 +1,20 @@
+{% assign splitTemplateContent = include.templateContent %}
+
+<div class="grid-x">
+    <div class="{{ splitTemplateContent.leftclass }}">
+        {% for left in splitTemplateContent.left %}
+            {% include {{ left.templatePath }} templateContent=left %}
+        {% endfor %}
+    </div>
+    <div class="{{ splitTemplateContent.rightclass }} {% if splitTemplateContent.rightcenter %}center-vertically-parent{% endif %}">
+        {% if splitTemplateContent.rightcenter %}
+            <div class="center-vertically-child">
+        {% endif %}
+        {% for right in splitTemplateContent.right %}
+            {% include {{ right.templatePath }} templateContent=right %}
+        {% endfor %}
+        {% if splitTemplateContent.rightcenter %}
+            </div>
+        {% endif %}
+    </div>
+</div>

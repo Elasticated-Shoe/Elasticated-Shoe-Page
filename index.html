@@ -2,7 +2,34 @@
 permalink: /
 layout: content
 title: Home
+header:
+  sections:
+    - tag: top
+      text: Recent Commits
+    - tag: top
+      text: About This Site
+  introduction:
+    - templatePath: content_types/split-left-right.html
+      leftclass: small-12 medium-4 center-vertically-parent
+      rightclass: small-12 medium-8
+      rightcenter: rightcenter
+      left:
+        - templatePath: content_types/image.html
+          src: assets/images/home/bio.jpg
+          class: width-80-image margin-5-image rounded-image
+      right:
+        - templatePath: content_types/text.html
+          text: About Me
+          class: headspace-1 text-bold text-10-margins text-heading-nav
+        - templatePath: content_types/text.html
+          text: I am Jacob Metcalfe, I work as a software development apprentice at DXC technology. Mostly developing on the frontend, and some work on the backend of sites. I'm a big fan of pizza and The Office, separately or at the same time. Always looking for opportunities to further my skillset.
+          class: text-10-margins menu-text
+javascript:
+  - id: homeController
+    script: assets/js/home.js
+template:
+  - templatePath: content_types/gitRepos.html
 sections:
-    - order: 0.5
-      templatePath: content_types/text.html
+  - templatePath: content_types/jsTemplateContent.html
+    id: gitReposTemplateContent
 ---

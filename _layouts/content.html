@@ -2,11 +2,11 @@
 layout: default
 ---
 {% if page.sections %}
-	{% assign sections = page.sections | sort: "order" %} {% comment %} <!-- gets page sections as an array ordered by the value of 'order' var --> {% endcomment %}
+	{% assign sections = page.sections %}
     <div id="content-container" class="cell shrink">
     {% for section in sections %}
-        <div {% if section.class %}class="{{ section.class }}"{% endif %} data-template="{{ section.templatePath }}">
-            {% include {{ section.templatePath }} content=section %}
+        <div class="grid-container {{ section.class }}" data-template="{{ section.templatePath }}">
+            {% include {{ section.templatePath }} templateContent=section %}
         </div>
     {% endfor %}
     </div>
