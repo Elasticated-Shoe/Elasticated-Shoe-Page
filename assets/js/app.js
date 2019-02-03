@@ -13,28 +13,18 @@ $(document).ready(function(){
     });
     // performs fuzzy search when search button clicked or when you press enter
     // only does this after fetching the json file
-    $.get("/assets/searchIndex.json", function(searchData) {
+    $.get("/Elasticated-Shoe-Page/assets/searchIndex.json", function(searchData) {
         // button click
-        $("#searchBarButton").click(function() {
-            search = $(".search-bar-container input").val()
+        $(".searchInput + button").click(function() {
+            search = $(".searchInput").val();
             if(search === "") {
                 return false;
             }
             performSearch(searchData, search)
         });
-        // on input enter keyup
-        $("#searchBarInput").on('keyup', function (e) {
-            if (e.keyCode == 13) {
-                search = $(".search-bar-container input").val()
-                if(search === "") {
-                    return false;
-                }
-                performSearch(searchData, search)
-            }
-        });
     });
     // show alphabatised results
-    $.get("/assets/alphabatisedIndex.json", function(alphabatisedData) {
+    $.get("/Elasticated-Shoe-Page/assets/alphabatisedIndex.json", function(alphabatisedData) {
         // passes clicked letter to search
         $(".alphabettiSpaghetti div ul li").click(function () {
             var letterKey = $(this).text();
