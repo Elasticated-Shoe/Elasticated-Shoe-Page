@@ -40,6 +40,7 @@ $(document).ready(function(){
         // store data in local storage as cache
         localStorage.setItem("commitHistroy", JSON.stringify(allCommits));
         localStorage.setItem("commitHistroyGetTime", Date.now());
+        $("#mobileMessage").html("Using GIT API");
         var template = $('#gitReposTemplate').html()
         var compiledTemplate = _.template(template);
         var templateMarkup = compiledTemplate({commits: allCommits});
@@ -49,6 +50,7 @@ $(document).ready(function(){
   }
   else {
     console.log("Using Cache");
+    $("#mobileMessage").html("Using GIT Cache");
     var commitsCache = JSON.parse(localStorage.getItem("commitHistroy"));
     var template = $('#gitReposTemplate').html()
     var compiledTemplate = _.template(template);
