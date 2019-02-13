@@ -1,32 +1,34 @@
 <script id="gitReposTemplate" type = "text/template">
     <div class="grid-x headspace-2 footspace-2">
         <div class="small-12">
-            <table style="width:100%">
-                <tr>
-                    <th>Commited On</th>
-                    <th>Commit Message</th>
-                    <th>Repository Name</th> 
-                    <th>Commiter</th>
-                </tr>
+            <table id="gitCommitsTable" class="display" style="width:100%">
+                <thead>
+                    <tr class="center-horizontally-parent">
+                        <th>Commited On</th>
+                        <th>Commit Message</th>
+                        <th>Repository Name</th> 
+                        <th>Commiter</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <% for(commit in commits)  { %>
                     <tr>
                         <th>
-                            <p><%= commits[commit]["commit"]["author"]["date"] %></p>
+                            <p><%= commits[commit]["date"] %></p>
                         </th>
                         <th>
-                            <p><%= commits[commit]["commit"]["message"] %></p>
+                            <p><%= commits[commit]["comment"] %></p>
                         </th>
                         <th>
-                            <p><%= commits[commit]["repoName"] %></p>
+                            <p><%= commits[commit]["repo"] %></p>
                         </th>
                         <th>
                             <p>Elasticated-Shoe</p>
                         </th>
                     </tr>
-                    <% if(commit > 23)  { 
-                        break;
-                    } %>
                 <% } %>
+                </tbody>
+            </table>
         </div>
     </div>
 </script>

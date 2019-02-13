@@ -14,12 +14,13 @@ function getFormattedDate(date) {
 $(document).ready(function(){
   // check if there is a cache present, and that it is not older than threshold
   var commitsCacheTime = localStorage.getItem("commitHistroyGetTime");
-  // cache old, refresh
+  // if cache old, refresh
   if(Date.now() - commitsCacheTime > 600000) {
     console.log("Regenerating Cache");
     $.get("https://api.github.com/users/Elasticated-Shoe/repos", function(gitData) {
       var allCommits = []
       var promises = [];
+      // create promises for each repo
       for(repo in gitData) {
           var repoCommits = gitData[repo]["commits_url"].replace("{/sha}", "")
           var promise = $.get(repoCommits, function(commitData) {
@@ -29,22 +30,30 @@ $(document).ready(function(){
           });
         promises.push(promise);
       }
-      // this way waits until all promises are executed before executing callback
+      // this way waits until all promises are executed before executing callback, we can be certain all the data will be available
       Promise.all(promises).then(function() {
+        commitCacheArray = [];
         allCommits.sort(function(a,b){return Date.parse(a["commit"]["author"]["date"]) - Date.parse(b["commit"]["author"]["date"])});
         allCommits = allCommits.reverse();
+        // take values needed into commitCacheArray, so we only store what is needed
         for(commit in allCommits) {
-          allCommits[commit]["repoName"] = allCommits[commit]["url"].split("/")[5];
-          allCommits[commit]["commit"]["author"]["date"] = getFormattedDate(allCommits[commit]["commit"]["author"]["date"]);
+          commitCacheArray.push({
+            "repo": allCommits[commit]["url"].split("/")[5],
+            "date": getFormattedDate(allCommits[commit]["commit"]["author"]["date"]),
+            "comment": allCommits[commit]["commit"]["message"]
+          });
         }
         // store data in local storage as cache
-        localStorage.setItem("commitHistroy", JSON.stringify(allCommits));
+        localStorage.setItem("commitHistroy", JSON.stringify(commitCacheArray));
         localStorage.setItem("commitHistroyGetTime", Date.now());
         $("#mobileMessage").html("Using GIT API");
         var template = $('#gitReposTemplate').html()
         var compiledTemplate = _.template(template);
-        var templateMarkup = compiledTemplate({commits: allCommits});
+        var templateMarkup = compiledTemplate({commits: commitCacheArray});
         $('#gitReposTemplateContent').html(templateMarkup);
+        $('#gitCommitsTable').DataTable({
+          "order": [[ 0, "desc" ]]
+        });
       });
     });
   }
@@ -56,5 +65,8 @@ $(document).ready(function(){
     var compiledTemplate = _.template(template);
     var templateMarkup = compiledTemplate({commits: commitsCache});
     $('#gitReposTemplateContent').html(templateMarkup);
+    $('#gitCommitsTable').DataTable({
+      "order": [[ 0, "desc" ]]
+    });
   }
 });

@@ -1,19 +1,19 @@
 <div class="cell shrink header-container">
     <div class="grid-x">
-        <div class="small-12 medium-4 center-vertically-parent">
+        <div class="small-12 medium-6 large-4 center-vertically-parent">
             {% include navbar.html content=section %}
         </div>
-        <div class="small-12 medium-3 center-horizontally-parent page-anchors">
+        <div class="small-12 medium-6 large-3 center-horizontally-parent page-anchors">
             <h1>{{ page.title }}</h1>
-            <ul>
+            <ul class="page-links">
                 {% for anchor in page.header.sections %}
                     <li>
-                        <a href="#{{ anchor.tag }}">{{ anchor.text }}</a>
+                        <a href="#{{ anchor.tag }}" data-smooth-scroll>{{ anchor.text }}</a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="small-12 medium-5">
+        <div class="small-12 medium-12 large-5">
             {% for section in page.header.introduction %}
                 {% include {{ section.templatePath }} templateContent=section %}
             {% endfor %}

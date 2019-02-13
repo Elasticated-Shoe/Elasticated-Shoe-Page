@@ -29,7 +29,9 @@ h1 {
     .page-anchors ul {
         list-style-type: none;
     }
-
+.page-links {
+    margin-left: 0;
+}
 /*  ==================================================================================== */
 /*  Menu Classes                                                                         */
 /*  ==================================================================================== */
@@ -84,6 +86,20 @@ h1 {
     background-color: #4c9f70;
     min-height: 40px;
     cursor: pointer;
+}
+
+/*  ==================================================================================== */
+/*  Table Classes                                                                        */
+/*  ==================================================================================== */
+
+.pagination li.paginate_button.current {
+    background-color: #496f5d;
+}
+.pagination li.paginate_button {
+    background-color: #4c9f70;
+}
+.pagination li.paginate_button.previous, .pagination li.paginate_button.next {
+    background-color: white;
 }
 
 /*  ==================================================================================== */
@@ -206,7 +222,7 @@ h1 {
     .center-horizontally-parent .center-vertically-child {
         margin: auto;
     }
-.center-horizontally-parent {
+.center-horizontally-parent, .center-horizontally-parent th {
     text-align: center;
 }
 .fill-container {
