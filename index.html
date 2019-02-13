@@ -10,6 +10,10 @@ header:
       text: Search This Site
     - tag: recentCommitsTemplate
       text: Recent Commits
+    - tag: commitHistoryGraphaboutGitAPI
+      text: Commit History
+    - tag: aboutGitAPI
+      text: The GitHub API
   introduction:
     - templatePath: content_types/split-left-right.html
       leftclass: small-12 medium-4 large-4 center-vertically-parent
@@ -48,4 +52,27 @@ sections:
     class: headspace-1 text-bold
   - templatePath: content_types/jsTemplateContent.html
     id: gitReposTemplateContent
+    message: Loading Template..
+  - templatePath: content_types/text.html
+    anchor: commitHistoryGraph
+    text: Commit Frequency
+    class: headspace-1 text-bold
+  - templatePath: content_types/jsTemplateContent.html
+    id: gitReposGraphContent
+    message: Loading Graph..
+  - templatePath: content_types/text.html
+    anchor: aboutGitAPI
+    text: About The GitHub API
+    class: headspace-1 text-bold
+  - templatePath: content_types/text.html
+    text: >
+      These statistics are generated from the GitHub API. Through an AJAX request to 
+      <a href="https://api.github.com/users/Elasticated-Shoe/repos">https://api.github.com/users/Elasticated-Shoe/repos</a>, returns a JSON response. There are 
+      several other URLs that you can do a GET request for to get other information. For example, some people using GitHub Pages will store blog posts in the issue tracker 
+      (there is no backend in GitHub Pages, it is a workaround to store posts and comments for their sites), they will fetch these issues through the GitHub API. 
+      The public API is rate limited by IP adress and too many requests will cause a temporary timeout. To get around this you can use a query string to reduce 
+      the amount of date you are returning (like specifying a date range), store the result as a JSON string in localstorage and authenticate with a token to raise 
+      the limit.<br><br>
+      For more information go to the <a href="https://developer.github.com/v3/">GitHub API documentation page</a>.
+    class: footspace-2 text-bold
 ---

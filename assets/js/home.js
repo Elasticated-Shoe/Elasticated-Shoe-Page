@@ -11,6 +11,50 @@ function getFormattedDate(date) {
     minute = minute > 9 ? minute : '0' + minute;
     return year + '/' + month + '/' + day + " - " + hour + ":" + minute;
 }
+
+function generateTable(data) {
+  var template = $('#gitReposTemplate').html()
+  var compiledTemplate = _.template(template);
+  var templateMarkup = compiledTemplate({commits: data});
+  $('#gitReposTemplateContent').html(templateMarkup);
+  $('#gitCommitsTable').DataTable({
+    "order": [[ 0, "desc" ]]
+  });
+}
+
+function getGraphData(data) {
+  data = data.reverse();
+  var xValues = [];
+  var yValues = [];
+  var commitData = {};
+  for(commit in data) {
+    var tempDate = new Date(data[commit]["timestamp"]).getTime();
+    tempDate = Math.floor(tempDate / 86400000) * 86400000;
+    if(!(tempDate in commitData)) {
+      commitData[tempDate] = [];
+    }
+    commitData[tempDate].push("1");
+  }
+  for(commitDate in commitData) {
+    xValues.push(new Date(parseInt(commitDate)).toISOString());
+    yValues.push(commitData[commitDate].length);
+  }
+  var commitFreqOrdered = yValues.slice();
+  commitFreqOrdered.sort(function sortNumber(a,b) {return b - a;});
+  var graph = [{
+      x: xValues,
+      y: yValues,
+      type: 'bar'
+  }];
+  var layout = {
+    yaxis: {
+      range: [0, commitFreqOrdered[0] + 2],
+    }
+  };
+  $('#gitReposGraphContent').html("");
+  Plotly.newPlot('gitReposGraphContent', graph, layout);
+}
+
 $(document).ready(function(){
   // check if there is a cache present, and that it is not older than threshold
   var commitsCacheTime = localStorage.getItem("commitHistroyGetTime");
@@ -39,6 +83,7 @@ $(document).ready(function(){
         for(commit in allCommits) {
           commitCacheArray.push({
             "repo": allCommits[commit]["url"].split("/")[5],
+            "timestamp": Date.parse(allCommits[commit]["commit"]["author"]["date"]),
             "date": getFormattedDate(allCommits[commit]["commit"]["author"]["date"]),
             "comment": allCommits[commit]["commit"]["message"]
           });
@@ -46,27 +91,21 @@ $(document).ready(function(){
         // store data in local storage as cache
         localStorage.setItem("commitHistroy", JSON.stringify(commitCacheArray));
         localStorage.setItem("commitHistroyGetTime", Date.now());
+        // generate table
+        generateTable(commitCacheArray);
+        // generate graph
+        getGraphData(commitCacheArray);
         $("#mobileMessage").html("Using GIT API");
-        var template = $('#gitReposTemplate').html()
-        var compiledTemplate = _.template(template);
-        var templateMarkup = compiledTemplate({commits: commitCacheArray});
-        $('#gitReposTemplateContent').html(templateMarkup);
-        $('#gitCommitsTable').DataTable({
-          "order": [[ 0, "desc" ]]
-        });
       });
     });
   }
   else {
     console.log("Using Cache");
-    $("#mobileMessage").html("Using GIT Cache");
     var commitsCache = JSON.parse(localStorage.getItem("commitHistroy"));
-    var template = $('#gitReposTemplate').html()
-    var compiledTemplate = _.template(template);
-    var templateMarkup = compiledTemplate({commits: commitsCache});
-    $('#gitReposTemplateContent').html(templateMarkup);
-    $('#gitCommitsTable').DataTable({
-      "order": [[ 0, "desc" ]]
-    });
+    $("#mobileMessage").html("Using GIT Cache");
+    // generate table
+    generateTable(commitsCache);
+    // generate graph
+    getGraphData(commitsCache);
   }
 });

@@ -5,10 +5,10 @@
         </div>
         <div class="small-12 medium-6 large-3 center-horizontally-parent page-anchors">
             <h1>{{ page.title }}</h1>
-            <ul class="page-links">
+            <ul class="page-links" data-smooth-scroll>
                 {% for anchor in page.header.sections %}
                     <li>
-                        <a href="#{{ anchor.tag }}" data-smooth-scroll>{{ anchor.text }}</a>
+                        <a href="#{{ anchor.tag }}">{{ anchor.text }}</a>
                     </li>
                 {% endfor %}
             </ul>
