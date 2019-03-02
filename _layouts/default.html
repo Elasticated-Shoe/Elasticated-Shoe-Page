@@ -16,19 +16,12 @@
             <button class="close-button" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>
             </button>
-            </div>
-        <script src="{{ site.baseurl }}assets/js/vendor/jquery.js"></script>
-        <script src="{{ site.baseurl }}assets/js/vendor/what-input.js"></script>
-        <script src="{{ site.baseurl }}assets/js/vendor/slick.min.js"></script>
-        <script src="{{ site.baseurl }}assets/js/vendor/underscore.js"></script>
-        <script src="{{ site.baseurl }}assets/js/vendor/fuse.js"></script>
-        <script src="{{ site.baseurl }}assets/js/vendor/foundation.min.js"></script>
-        <script src="{{ site.baseurl }}assets/js/vendor/datatables.min.js"></script>
-        <script src="{{ site.baseurl }}assets/js/vendor/plotly.js"></script>
-        <script src="{{ site.baseurl }}assets/js/app.js"></script>
+        </div>
+        <script async src="{{ site.baseurl }}assets/js/vendor/bundle.js"></script>
+        <script async src="{{ site.baseurl }}assets/js/app.js"></script>
         {% if page.javascript %}
             {% for i in page.javascript %}
-                <script id="{{ i.id }}" {% if i.type %}type = "{{ i.type }}"{% endif %} src="{{ site.baseurl }}{{ i.script }}"></script>
+                <script async id="{{ i.id }}" {% if i.type %}type = "{{ i.type }}"{% endif %} src="{{ site.baseurl }}{{ i.script }}"></script>
             {% endfor %}
         {% endif %}
         {% if page.template %}
