@@ -19,3 +19,9 @@ def generateVendorBundle(bundleFileType, bundleFilePath, mode):
 
 generateVendorBundle("js", jsBundleFile, "uglifyjs")
 generateVendorBundle("css", cssBundleFile, "uglifycss")
+
+commandLine.runCommand("jekyll build -s '" + fileSystem.joinPath([".."]) + "' -d '" + fileSystem.joinPath(["..", "_site"]) + "'")
+
+allPages = fileSystem.createFileTypeIndexedDict(fileSystem.joinPath(["..", "_site"]))
+for i in range(len(allPages["html"])):
+    commandLine.runCommand('html-minifier --collapse-whitespace --output "' + allPages["html"][i]["Path"] + '" "' + allPages["html"][i]["Path"] + '"')
