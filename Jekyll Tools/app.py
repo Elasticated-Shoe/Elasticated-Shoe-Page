@@ -3,6 +3,8 @@ import fileSystem
 import commandLine
 
 allAssets = fileSystem.createFileTypeIndexedDict(fileSystem.joinPath(["..", "assets"]))
+allIncludes = fileSystem.createFileTypeIndexedDict(fileSystem.joinPath(["..", "_includes"]))
+allLayouts = fileSystem.createFileTypeIndexedDict(fileSystem.joinPath(["..", "_layouts"]))
 jsBundleFile = fileSystem.joinPath(["..", "assets", "js", "vendor", "bundle.js"])
 cssBundleFile = fileSystem.joinPath(["..", "assets", "css", "bundle.css"])
 TempFilePath = fileSystem.joinPath(["..", "assets", "tempfile.txt"])
@@ -17,11 +19,13 @@ def generateVendorBundle(bundleFileType, bundleFilePath, mode):
         fileSystem.appendToFile(bundleFilePath, fileSystem.readFromFile(TempFilePath))
     fileSystem.deleteFile(TempFilePath)
 
+def minifyTemplate(data):
+    for i in range(len(data)):
+        commandLine.runCommand('html-minifier --collapse-whitespace --output "' + data[i]["Path"].replace(".html", "Min.html") + '" "' + data[i]["Path"] + '"')
+
 generateVendorBundle("js", jsBundleFile, "uglifyjs")
 generateVendorBundle("css", cssBundleFile, "uglifycss")
 
-commandLine.runCommand("jekyll build -s '" + fileSystem.joinPath([".."]) + "' -d '" + fileSystem.joinPath(["..", "_site"]) + "'")
+#minifyTemplate(allIncludes["html"])
 
-allPages = fileSystem.createFileTypeIndexedDict(fileSystem.joinPath(["..", "_site"]))
-for i in range(len(allPages["html"])):
-    commandLine.runCommand('html-minifier --collapse-whitespace --output "' + allPages["html"][i]["Path"] + '" "' + allPages["html"][i]["Path"] + '"')
+commandLine.runCommand("jekyll build -s '" + fileSystem.joinPath([".."]) + "' -d '" + fileSystem.joinPath(["..", "_site"]) + "'")
