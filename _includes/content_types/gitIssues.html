@@ -1,0 +1,36 @@
+<script id="gitIssuesTemplate" type = "text/template">
+    <% for(name in repoName)  { %>
+        <div id="<%= name %>" class="grid-x headspace-2 footspace-2 issue-container <% if(Object.keys(repoName).indexOf(name) === 0) { %>issue-container-top<% } %>">
+            <div class="small-12 center-horizontally-parent">
+                <h2><%= name %></h2>
+            </div>
+            <% for(issue in repoName[name])  { 
+                if("Label" in repoName[name][issue] && repoName[name][issue]["Label"] == "Description") { %>
+                    <div class="small-12 medium-4 center-horizontally-parent">
+                        <h3>Description</h3>
+                            <p><%= repoName[name][issue]["Text"] %></p>
+                            <small><a href="<%= repoName[name][issue]['Url'] %>">Go To Repo</a></small>
+                    </div>
+                <% } %>
+            <% } %>
+            
+            <div class="small-12 medium-4 center-horizontally-parent issue-card-container">
+                <h3>Open Issues</h3>
+                <% for(issue in repoName[name])  { 
+                    if("Label" in repoName[name][issue] && repoName[name][issue]["Label"] == "bug") { %>
+                        <p class="issue-card"><a href="<%= repoName[name][issue]['Url'] %>"><%= repoName[name][issue]["Title"] %></a></p>
+                    <% } %>
+                <% } %>
+            </div>
+            
+            <div class="small-12 medium-4 center-horizontally-parent issue-card-container">
+                <h3>Future Features</h3>
+                <% for(issue in repoName[name])  { 
+                    if("Label" in repoName[name][issue] && repoName[name][issue]["Label"] == "enhancement") { %>
+                        <p class="issue-card"><a href="<%= repoName[name][issue]['Url'] %>"><%= repoName[name][issue]["Title"] %></a></p>
+                    <% } %>
+                <% } %>
+             </div>
+        </div>
+    <% } %>
+</script>

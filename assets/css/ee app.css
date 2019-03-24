@@ -9,6 +9,9 @@ body, .body-grid {
 p {
     margin: 0;
 }
+small a {
+    color: #496f5d;
+}
 h1 {
     font-weight: bold;
 }
@@ -101,6 +104,31 @@ h1 {
 .pagination li.paginate_button.previous, .pagination li.paginate_button.next {
     background-color: white;
 }
+
+/*  ==================================================================================== */
+/*  Issue Classes                                                                        */
+/*  ==================================================================================== */
+
+.issue-container-top {
+    border-top: 10px solid white !important;
+}
+.issue-container {
+    border-top: 10px solid #4c9f70;
+}
+    .issue-container > div {
+        padding: 5px;
+    }
+    .issue-card-container {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+        .issue-card {
+            cursor: pointer;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+        .issue-card a {
+            color: black;
+        }
 
 /*  ==================================================================================== */
 /*  Footer Classes                                                                      */

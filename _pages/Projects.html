@@ -2,8 +2,13 @@
 permalink: Projects/
 layout: content
 title: Projects
+javascript:
+  - id: projectsController
+    script: assets/js/projects.js
+template:
+  - templatePath: content_types/gitIssues.html
 sections:
-    - order: 1
-      templatePath: content_types/text.html
-      text: Coming Soon
+  - templatePath: content_types/jsTemplateContent.html
+    id: gitIssuesTemplateContent
+    message: Loading Template..
 ---
