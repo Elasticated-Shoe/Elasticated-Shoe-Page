@@ -1,0 +1,216 @@
+---
+permalink: Maze-Test/
+---
+
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Olde Worlde Phunne</title>
+        <link rel="stylesheet" href="{{ site.baseurl }}assets/maze/css/foundation.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}assets/maze/css/app.css">
+        <link rel="icon" href="{{ site.baseurl }}assets/maze/images/logo_noName.png"/>
+    </head>
+    <body>
+        <div class="grid-y body-grid">
+            <!-- Div for contents of page header, like nav bar or banner -->
+            <div class="cell shrink header-container">
+                <div class="top-bar">
+                    <div class="top-bar-left">
+                        <ul class="menu">
+                            <li class="menu-text">Olde Worlde Phunne</li>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Downloads</a></li>
+                            <li><a href="#" class="is-active">Free Game!</a></li>
+                        </ul>
+                    </div>
+                    <div class="top-bar-right">
+                        <img src="{{ site.baseurl }}assets/maze/images/logo_noName.png">
+                    </div>
+                </div>
+            </div>
+            <!-- page contents div -->
+            <div id="content-container" class="cell auto">
+                <!-- page contents rendered here -->  
+            </div>
+            <!-- footer element that will always be at bottom of page (not viewport) -->
+            <div class="footer-container cell shrink">
+                <div class="footer-bottom-container">
+                    <div class="center-vertically-parent">
+                        <p class="center-vertically-child">Copyright Phunne 2018</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Error Modal -->
+        <div class="reveal" id="error-modal" data-reveal>
+            <div id="error-contents">
+
+            </div>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <!-- Config Modal -->
+        <div class="reveal" id="config-modal" data-reveal>
+            <form id="config-form" data-abide novalidate>
+                    <div data-abide-error class="alert callout" style="display: none;">
+                        <p><i class="fi-alert"></i> There are some errors in your form.</p>
+                    </div>
+                    <div class="grid-container">
+                        <div class="grid-x grid-margin-x">
+                            <div class="cell large-12">
+                                <input type="text" name="name" placeholder="Config Name" aria-errormessage="error-name-required" required >
+                                <span class="form-error" id="error-name-required">Input A Name!</span>
+                            </div>
+                            <div class="cell large-12">
+                                <input type="text" name="speed" placeholder="Movement Speed" aria-errormessage="error-speed-required" required >
+                                <span class="form-error" id="error-speed-required">Input A Speed!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-container">
+                        <div class="grid-x grid-margin-x">
+                            <div class="cell large-6">
+                                <button class="button" type="submit" value="Submit">Submit</button>
+                            </div>
+                            <div class="cell large-6">
+                                <button class="button" type="reset" value="Reset">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <script src="{{ site.baseurl }}assets/maze/js/vendor/jquery.js"></script>
+        <script src="{{ site.baseurl }}assets/maze/js/vendor/what-input.js"></script>
+        <script src="{{ site.baseurl }}assets/maze/js/vendor/foundation.js"></script>
+        <script src="{{ site.baseurl }}assets/maze/js/vendor/underscore.js"></script>
+        <script src="{{ site.baseurl }}assets/maze/js/gameMenu.js"></script>
+        <script src="{{ site.baseurl }}assets/maze/js/gameMap.js"></script>
+        <script src="{{ site.baseurl }}assets/maze/js/gameLogic.js"></script>
+        <script src="{{ site.baseurl }}assets/maze/js/app.js"></script>
+        <!-- Underscore Templates start here -->
+        <!-- Home template -->
+        <script type="text/template" id="start-screen">
+            <div class="grid-y start-menu">
+                <div class="small-7">
+                    <div class="start-menu-item-first">
+                        <h1>
+                            <a data-page="viewSave">Start</a>
+                        </h1>
+                    </div>
+                </div>
+                <div class="small-5">
+                    <div class="start-menu-item">
+                        <h2>
+                            <a data-page="viewConfig">Manage Configuration</a>
+                        </h2>
+                    </div>
+                    <div class="start-menu-item">
+                        <h2>
+                            <a data-page="Leaderboard">High Scores</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <!-- Leaderboard template -->
+        <script type="text/template" id="score-screen">
+            <div class="grid-y">
+                <div class="small-3 medium-1">
+                    <a class="back-arrow button">back</a>
+                    <ul class="tabs" data-tabs id="example-tabs">
+                        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+                        <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Tab 2</a></li>
+                    </ul>
+                </div>
+                <div class="small-1 medium-2 center-horizontally-parent">
+                    <h1>Highscores</h1>
+                </div>
+                <div class="small-5 medium-7">
+                    <div class="tabs-content" data-tabs-content="example-tabs">
+                        <div class="tabs-panel is-active" id="panel1">
+                            <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+                        </div>
+                        <div class="tabs-panel" id="panel2">
+                            <p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-3 medium-2">
+                    <ul class="view-control-list">
+                        <li><a class="button">Control</a></li>
+                        <li><a class="button">Test</a></li>
+                    </ul>
+                </div>
+            </div>
+        </script>
+        <!-- Selection template -->
+        <script type="text/template" id="view-screen">
+            <% if(!dataObj) {
+                dataObj = {};
+            } %>
+            <div class="grid-y">
+                <div class="small-3 medium-1">
+                    <div class="grid-x">
+                        <div class="small-2">
+                                <a class="back-arrow button">back</a>
+                        </div>
+                        <div class="small-8 center-vertically-parent center-horizontally-parent">
+                            <p class="view-title center-vertically-child"><%= pageTitle %></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-6 medium-9 selectable-items">
+                    <% if(!dataObj || $.isEmptyObject(dataObj)) { %>
+                        <div class="grid-container">
+                            <div class="grid-x">
+                                <div class="small-12">
+                                    <p>Nothing To Show, Try Creating One By Clicking 'New' On The Bar At The Bottom</p>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    <% for(configKeyName in dataObj) { %>
+                        <div class="grid-container">
+                            <div class="grid-x" data-name="<%= configKeyName %>">
+                                <div class="small-2">
+                                    <p class="center-horizontally-parent"><%= configKeyName %></p>
+                                </div>
+                                <div class="small-6">
+
+                                </div>
+                                <div class="small-4">
+                                    <p class="center-horizontally-parent"><%= dataObj[configKeyName]["created"] %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="small-3 medium-2">
+                    <div style="position: relative; height: 100%;">
+                        <ul class="view-control-list" style="position:absolute; margin-bottom: 0; bottom: 0;">
+                            <% for(buttonName in buttons) { %>
+                                <li><a id="<%= buttons[buttonName] %>" class="button"><%= buttonName %></a></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <!-- Game template -->
+        <script type="text/template" id="game-screen">
+            <div id="canvas-container">
+                <!-- Map canvas gets drawn once on load so only non static elements are drawn each game tick -->
+                <canvas id="game-canvas"></canvas>
+                <!-- mob-canvas is for dynamic elements in the game -->
+                <canvas id="mob-canvas"></canvas>
+            </div>
+        </script>
+    </body>
+</html>

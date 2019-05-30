@@ -1,0 +1,201 @@
+html {
+    height: 100%;
+    overflow-x: hidden;
+} 
+body, .body-grid {
+    height: 100%;
+    min-height: 100%;
+}
+
+h1 a {
+    font-weight: bold;
+    font-size: 3em;
+}
+
+p, li, a {
+    color: #272324;
+}
+p {
+    margin: 0;
+}
+#canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+    canvas {
+        position: absolute;
+    }
+
+a:hover {
+    text-decoration: underline;
+    color: #272324;
+}
+
+#content-container > div {
+    height: 100%;
+}
+
+ul.tabs {
+    border: none;
+}
+    .tabs-title a {
+        color: #272324;
+    }
+    .tabs-title.is-active a {
+        background-color: #E86F68;
+        color: #272324;
+    }
+    .tabs-title a:hover {
+        background-color: #E4D8B4;
+        color: #272324;
+    }
+
+li a {
+    margin-bottom: 0 !important; 
+}
+
+/*  ==================================================================================== */
+/*  Header Classes                                                                       */
+/*  ==================================================================================== */
+
+.header-container {
+    background-color: #E86F68;
+}
+    .top-bar, .top-bar div ul { /* make navbar have same background as header */
+        background-color: #E86F68;
+        padding-left: 0px;
+    }
+        .menu-text {
+            background-color: #E2CD6D;
+        }
+        .is-active {
+            font-weight: bold;
+        }
+
+/*  ==================================================================================== */
+/*  Start Screen Classes                                                                 */
+/*  ==================================================================================== */
+
+.start-menu {
+    
+}
+    .start-menu > :first-child {
+        position: relative;
+    }
+    .start-menu-item, .start-menu-item-first {
+        width: 100%;
+    }
+    .start-menu-item-first {
+        position: absolute;
+        bottom: 0px;
+    }
+
+/*  ==================================================================================== */
+/*  View Template Classes                                                                */
+/*  ==================================================================================== */
+
+.view-title {
+    font-weight: bold;
+}
+.view-control-list {
+    width: 100%;
+    list-style-type: none;
+}
+.view-control-list li {
+    float: left;
+}
+.selectable-items {
+    overflow-y: auto;
+}
+    .selectable-items > div{
+        cursor:pointer;
+    }
+.selected {
+    background-color: #E86F68;
+}
+
+/*  ==================================================================================== */
+/*  Tabs Screen Classes                                                                  */
+/*  ==================================================================================== */
+
+.tabs {
+    display: inline-flex;
+}
+
+/*  ==================================================================================== */
+/*  Footer Classes                                                                       */
+/*  ==================================================================================== */
+
+.footer-container {
+    position: relative;
+    min-height: 50px;
+    width: 100%;
+}
+    .footer-bottom-container {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        min-height: 50px;
+        background-color: #E86F68;
+    }
+        .footer-bottom-container div {
+            min-height: 50px;
+        }
+
+/*  ==================================================================================== */
+/*  Utility Formating                                                                    */
+/*  ==================================================================================== */
+
+.headspace-1 {
+    margin-top: 1em;
+}
+.headspace-2 {
+    margin-top: 2em;
+}
+.headspace-3 {
+    margin-top: 3em;
+}
+.headspace-4 {
+    margin-top: 4em;
+}
+.footspace-1 {
+    margin-bottom: 1em;
+}
+.footspace-2 {
+    margin-bottom: 2em;
+}
+.footspace-3 {
+    margin-bottom: 3em;
+}
+.footspace-4 {
+    margin-bottom: 4em;
+}
+
+.back-arrow {
+    margin: auto 10px auto 10px;
+    background-color: #E2CD6D;
+    color: #272324;
+}
+.back-arrow:hover {
+    background-color: #E86F68;
+    color: #272324;
+}
+
+.center-vertically-parent {
+    display: flex;
+    align-items: center;
+}
+    .center-vertically-child {
+        margin: auto 0;
+    }
+    .center-horizontally-parent .center-vertically-child {
+        margin: auto;
+    }
+.center-horizontally-parent, .center-horizontally-parent, .start-menu-item, .start-menu-item-first {
+    text-align: center;
+}
+.center-horizontally-child {
+    margin: auto;
+}
