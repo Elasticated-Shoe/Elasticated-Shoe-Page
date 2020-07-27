@@ -3,76 +3,76 @@ permalink: /
 layout: content
 title: Home
 header:
-  sections:
-    - tag: aboutTemplate
-      text: About This Site
-    - tag: searchBarTemplate
-      text: Search This Site
-    - tag: recentCommitsTemplate
-      text: Recent Commits
-    - tag: commitHistoryGraphaboutGitAPI
-      text: Commit History
-    - tag: aboutGitAPI
-      text: The GitHub API
-  introduction:
-    - templatePath: content_types/split-left-right.html
-      leftclass: small-12 medium-4 large-4 center-vertically-parent
-      rightclass: small-12 medium-8 large-8
-      rightcenter: rightcenter
-      left:
-        - templatePath: content_types/image.html
-          src: assets/images/home/bio.jpg
-          class: width-80-image margin-5-image rounded-image
-      right:
-        - templatePath: content_types/text.html
-          text: About Me
-          class: headspace-1 text-bold text-10-margins text-heading-nav
-        - templatePath: content_types/text.html
-          text: I am Jacob Metcalfe, I work as a software developer for Unify Business Solutions. Mostly developing C# APIs. I'm a big fan of pizza and The Office, separately or at the same time. Always looking for opportunities to further my skillset.
-          class: footspace-1 text-10-margins menu-text
+    sections:
+        - tag: aboutTemplate
+          text: About This Site
+        - tag: searchBarTemplate
+          text: Search This Site
+        - tag: recentCommitsTemplate
+          text: Recent Commits
+        - tag: commitHistoryGraphaboutGitAPI
+          text: Commit History
+        - tag: aboutGitAPI
+          text: The GitHub API
+    introduction:
+        - templatePath: content_types/split-left-right.html
+          leftclass: small-12 medium-4 large-4 center-vertically-parent
+          rightclass: small-12 medium-8 large-8
+          rightcenter: rightcenter
+          left:
+                - templatePath: content_types/image.html
+                  src: assets/images/home/bio.jpg
+                  class: width-80-image margin-5-image rounded-image
+          right:
+                - templatePath: content_types/text.html
+                  text: About Me
+                  class: headspace-1 text-bold text-10-margins text-heading-nav
+                - templatePath: content_types/text.html
+                  text: I am Jacob Metcalfe, I work as a software developer for Unify Business Solutions. Mostly developing C# APIs. I'm a big fan of pizza and The Office, separately or at the same time. Always looking for opportunities to further my skillset.
+                  class: footspace-1 text-10-margins menu-text
 javascript:
-  - id: homeController
-    script: assets/js/home.js
+    - id: homeController
+      script: assets/js/home.js
 template:
-  - templatePath: content_types/gitRepos.html
+    - templatePath: content_types/gitRepos.html
 sections:
-  - templatePath: content_types/text.html
-    anchor: aboutTemplate
-    text: About This Site
-    class: headspace-1 text-bold
-  - templatePath: content_types/text.html
-    text: This site is a GitHub Page, a repository that GitHub build using a static site generater (Jekyll in this case) and host themselves. Its main purpose is to store documentation for your projects and showcase examples if possible. I will also use it to display some GitHub statistics and blog, although not much of the latter.
-    class: text-bold
-  - templatePath: content_types/search.html
-    anchor: searchBarTemplate
-    class: headspace-2 footspace-2
-  - templatePath: content_types/text.html
-    anchor: recentCommitsTemplate
-    text: Recent Commits
-    class: headspace-1 text-bold
-  - templatePath: content_types/jsTemplateContent.html
-    id: gitReposTemplateContent
-    message: Loading Template..
-  - templatePath: content_types/text.html
-    anchor: commitHistoryGraph
-    text: Commit Frequency
-    class: headspace-1 text-bold
-  - templatePath: content_types/jsTemplateContent.html
-    id: gitReposGraphContent
-    message: Loading Graph..
-  - templatePath: content_types/text.html
-    anchor: aboutGitAPI
-    text: About The GitHub API
-    class: headspace-1 text-bold
-  - templatePath: content_types/text.html
-    text: >
-      These statistics are generated from the GitHub API. Through an AJAX request to 
-      <a href="https://api.github.com/users/Elasticated-Shoe/repos">https://api.github.com/users/Elasticated-Shoe/repos</a>, returns a JSON response. There are 
-      several other URLs that you can do a GET request for to get other information. For example, some people using GitHub Pages will store blog posts in the issue tracker 
-      (there is no backend in GitHub Pages, it is a workaround to store posts and comments for their sites), they will fetch these issues through the GitHub API. 
-      The public API is rate limited by IP adress and too many requests will cause a temporary timeout. To get around this you can use a query string to reduce 
-      the amount of date you are returning (like specifying a date range), store the result as a JSON string in localstorage and authenticate with a token to raise 
-      the limit.<br><br>
-      For more information go to the <a href="https://developer.github.com/v3/">GitHub API documentation page</a>.
-    class: footspace-2 text-bold
+    - templatePath: content_types/text.html
+      anchor: aboutTemplate
+      text: About This Site
+      class: headspace-1 text-bold
+    - templatePath: content_types/text.html
+      text: This site is a GitHub Page, a repository that GitHub build using a static site generater (Jekyll in this case) and host themselves. Its main purpose is to store documentation for your projects and showcase examples if possible. I will also use it to display some GitHub statistics and blog, although not much of the latter.
+      class: text-bold
+    - templatePath: content_types/search.html
+      anchor: searchBarTemplate
+      class: headspace-2 footspace-2
+    - templatePath: content_types/text.html
+      anchor: recentCommitsTemplate
+      text: Recent Commits
+      class: headspace-1 text-bold
+    - templatePath: content_types/jsTemplateContent.html
+      id: gitReposTemplateContent
+      message: Loading Template..
+    - templatePath: content_types/text.html
+      anchor: commitHistoryGraph
+      text: Commit Frequency
+      class: headspace-1 text-bold
+    - templatePath: content_types/jsTemplateContent.html
+      id: gitReposGraphContent
+      message: Loading Graph..
+    - templatePath: content_types/text.html
+      anchor: aboutGitAPI
+      text: About The GitHub API
+      class: headspace-1 text-bold
+    - templatePath: content_types/text.html
+      text: >
+        These statistics are generated from the GitHub API. Through an AJAX request to 
+        <a href="https://api.github.com/users/Elasticated-Shoe/repos">https://api.github.com/users/Elasticated-Shoe/repos</a>, returns a JSON response. There are 
+        several other URLs that you can do a GET request for to get other information. For example, some people using GitHub Pages will store blog posts in the issue tracker 
+        (there is no backend in GitHub Pages, it is a workaround to store posts and comments for their sites), they will fetch these issues through the GitHub API. 
+        The public API is rate limited by IP adress and too many requests will cause a temporary timeout. To get around this you can use a query string to reduce 
+        the amount of date you are returning (like specifying a date range), store the result as a JSON string in localstorage and authenticate with a token to raise 
+        the limit.<br><br>
+        For more information go to the <a href="https://developer.github.com/v3/">GitHub API documentation page</a>.
+      class: footspace-2 text-bold
 ---
