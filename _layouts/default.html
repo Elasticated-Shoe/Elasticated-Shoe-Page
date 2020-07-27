@@ -17,11 +17,22 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <script async src="{{ site.baseurl }}assets/js/vendor/bundle.js"></script>
-        <script async src="{{ site.baseurl }}assets/js/app.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/jquery.min.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/foundation.min.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/datatables.min.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/slick.min.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/fuse.min.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/underscore.min.js"></script>
+        <script src="{{ site.baseurl }}assets/js/vendor/plotly.min.js"></script>
+
+        <script src="{{ site.baseurl }}assets/js/app.js"></script>
+
+        <script src="{{ site.baseurl }}assets/js/gitUser.js"></script>
+        <script src="{{ site.baseurl }}assets/js/graphIt.js"></script>
+        <script src="{{ site.baseurl }}assets/js/cacheStore.js"></script>
         {% if page.javascript %}
             {% for i in page.javascript %}
-                <script async id="{{ i.id }}" {% if i.type %}type = "{{ i.type }}"{% endif %} src="{{ site.baseurl }}{{ i.script }}"></script>
+                <script id="{{ i.id }}" {% if i.type %}type = "{{ i.type }}"{% endif %} src="{{ site.baseurl }}{{ i.script }}"></script>
             {% endfor %}
         {% endif %}
         {% if page.template %}
