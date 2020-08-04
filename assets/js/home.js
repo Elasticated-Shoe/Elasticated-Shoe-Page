@@ -3,9 +3,9 @@ $(document).ready(function() {
         var gitUserObj = new gitUser("Elasticated-Shoe");
         
         gitUserObj.GetStats().then(function() {
-            cacheStore.Store("Repos", gitUserObj.Commits);
+            cacheStore.Store("Repos", gitUserObj.Repos);
             cacheStore.Store("Commits", gitUserObj.Commits);
-            cacheStore.Store("Issues", gitUserObj.Commits);
+            cacheStore.Store("Issues", gitUserObj.Issues);
             
             console.log("Table Generated From GIT API");
 
