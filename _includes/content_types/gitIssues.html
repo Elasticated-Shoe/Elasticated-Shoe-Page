@@ -5,11 +5,11 @@
                 <h2><%= name %></h2>
             </div>
             <% for(issue in repoName[name])  { 
-                if("Label" in repoName[name][issue] && repoName[name][issue]["Label"] == "Description") { %>
+                if("labels" in repoName[name][issue] && repoName[name][issue]["labels"].filter( function(x) { return x.name === "Description"}).length > 0 ) { %>
                     <div class="small-12 medium-4 center-horizontally-parent">
                         <h3>Description</h3>
-                            <p><%= repoName[name][issue]["Text"] %></p>
-                            <small><a href="<%= repoName[name][issue]['Url'] %>">Go To Repo</a></small>
+                            <p><%= repoName[name][issue]["body"] %></p>
+                            <small><a href="<%= repoName[name][issue]['html_url'].split('/issues')[0] %>">Go To Repo</a></small>
                     </div>
                 <% } %>
             <% } %>
@@ -17,8 +17,8 @@
             <div class="small-12 medium-4 center-horizontally-parent issue-card-container">
                 <h3>Open Issues</h3>
                 <% for(issue in repoName[name])  { 
-                    if("Label" in repoName[name][issue] && repoName[name][issue]["Label"] == "bug") { %>
-                        <p class="issue-card"><a href="<%= repoName[name][issue]['Url'] %>"><%= repoName[name][issue]["Title"] %></a></p>
+                    if("labels" in repoName[name][issue] && repoName[name][issue]["labels"].filter( function(x) { return x.name === "bug"}).length > 0 ) { %>
+                        <p class="issue-card"><a href="<%= repoName[name][issue]['html_url'] %>"><%= repoName[name][issue]["title"] %></a></p>
                     <% } %>
                 <% } %>
             </div>
@@ -26,8 +26,8 @@
             <div class="small-12 medium-4 center-horizontally-parent issue-card-container">
                 <h3>Future Features</h3>
                 <% for(issue in repoName[name])  { 
-                    if("Label" in repoName[name][issue] && repoName[name][issue]["Label"] == "enhancement") { %>
-                        <p class="issue-card"><a href="<%= repoName[name][issue]['Url'] %>"><%= repoName[name][issue]["Title"] %></a></p>
+                    if("labels" in repoName[name][issue] && repoName[name][issue]["labels"].filter( function(x) { return x.name === "enhancement"}).length > 0 ) { %>
+                        <p class="issue-card"><a href="<%= repoName[name][issue]['html_url'] %>"><%= repoName[name][issue]["title"] %></a></p>
                     <% } %>
                 <% } %>
              </div>
